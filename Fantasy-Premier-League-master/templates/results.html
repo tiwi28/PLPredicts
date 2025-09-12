@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Font Stuff -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL Predicts</title>
+
+        <div class="header">
+        <h1>PL Predicts</h1>
+    </div>
+
+    
+</head>
+<body>
+
+
+    <div class="results-display">
+    <h2>Prediction Results</h1>
+    
+    {% if success %}
+        <h2>Player: {{ player_name }}</h2>
+        <h3>Prediction: ≈ {{ predicted_points }} over the next 5 games</h3>
+    {% endif %}
+    
+    {% if error %}
+        <h2>ERROR</h2>
+        <p class="error-display">{{ error }}</p>
+        
+        {% if similar_players %}
+            <h3>Similar players found:</h3>
+            <ul>
+            {% for player in similar_players %}
+                <li>{{ player }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+
+    </div>
+    
+    <p >
+        <a class="bth-button" href="/">Back to Home</a>
+    </p>
+</body>
+
+</html>

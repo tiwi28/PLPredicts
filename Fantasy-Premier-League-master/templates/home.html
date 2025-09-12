@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Font Stuff -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL Predicts</title>
+</head>
+<body>
+
+<!-- IMAGE - need to figure out how to display it as it currently doesnt work -->
+ 
+        <!-- <img class="logo" src="{{url_for('static', filename='img/logo_flat_design.jpg')}}"> -->
+
+    <div class="header">
+        <h1>PL Predicts</h1>
+    </div>
+
+
+    <!-- Search Bar -->
+
+<div class = "search-component">
+    <h3>Enter a Player Name</h2>
+    <form action="{{ url_for('predict_player') }}" method="POST">
+        <input type="text" name="player_name" placeholder="Player Name" required>
+        <button type="submit" href="results.html">Predict</button>
+    </form>
+
+</div>
+
+</body>
+</html>

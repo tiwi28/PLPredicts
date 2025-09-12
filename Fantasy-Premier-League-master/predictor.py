@@ -88,13 +88,13 @@ X = features_df[feature_columns]
 y = features_df['target_points_next_5']
 
 
-print(f"Created {len(X)} training examples")
-print(f"Features: {feature_columns}")
-print(f"Target range: {y.min()} to {y.max()} points")
+# print(f"Created {len(X)} training examples")
+# print(f"Features: {feature_columns}")
+# print(f"Target range: {y.min()} to {y.max()} points")
 
 
-print(f"Original X shape: {X.shape}")
-print(f"Original y shape: {y.shape}")
+# print(f"Original X shape: {X.shape}")
+# print(f"Original y shape: {y.shape}")
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -103,11 +103,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # X_train = scaler.fit_transform(X_train)
 # X_test = scaler.transform(X_test)
 
-
-print(f"X_train shape: {X_train.shape}")
-print(f"y_train shape: {y_train.shape}")
-print(f"X_test shape: {X_test.shape}")  
-print(f"y_test shape: {y_test.shape}")
+#Debug Stuff
+# print(f"X_train shape: {X_train.shape}")
+# print(f"y_train shape: {y_train.shape}")
+# print(f"X_test shape: {X_test.shape}")  
+# print(f"y_test shape: {y_test.shape}")
 
 
 #Hyper-parameter tuning
@@ -130,7 +130,55 @@ def evaluate_model(model, X_test, y_test):
 
 
 # Evaluate the model
-mae, mse, r2 = evaluate_model(best_model, X_test, y_test)
-print(f"Mean Absolute Error: {mae:.2f} points")
-print(f"Mean Squared Error: {mse:.2f}")
-print(f"R² Score: {r2:.3f}")
+# mae, mse, r2 = evaluate_model(best_model, X_test, y_test)
+# print(f"Mean Absolute Error: {mae:.2f} points")
+# print(f"Mean Squared Error: {mse:.2f}")
+# print(f"R² Score: {r2:.3f}")
+
+
+def predict_single_player(player_name, model, existing_data):
+    # Use the same data we already loaded and processed
+    player_data = existing_data[existing_data['name'] == player_name].copy()
+    
+    if len(player_data) < 6:
+        return f"Not enough data for {player_name}"
+    
+    # Get their last 6 games from the existing data
+    last_6_games = player_data.tail(6)
+    
+    # Rest of the function stays the same...
+    features = {
+        'avg_points_last_6': last_6_games['total_points'].mean(),
+        'avg_goals_last_6': last_6_games['goals_scored'].mean(),
+        'avg_assists_last_6': last_6_games['assists'].mean(),
+        'avg_minutes_last_6': last_6_games['minutes'].mean(),
+        'avg_clean_sheets_last_6': last_6_games['clean_sheets'].mean(),
+        'player_pos': last_6_games['player_pos'].iloc[-1],
+        'value': last_6_games['value'].iloc[-1]
+    }
+    
+    feature_array = [[
+        features['avg_points_last_6'], features['avg_goals_last_6'], 
+        features['avg_assists_last_6'], features['avg_minutes_last_6'],
+        features['avg_clean_sheets_last_6'], features['player_pos'], features['value']
+    ]]
+    
+    prediction = model.predict(feature_array)[0]
+    return round(prediction, 2)
+
+# Test with existing data
+# test_prediction = predict_single_player("Virgil van Dijk", best_model, data)
+
+
+
+#Returns model and data to be used in the FLASK app
+def get_model_and_data():
+    return best_model, data
+
+# print(f"Prediction: {test_prediction} points")
+
+
+
+
+
+
