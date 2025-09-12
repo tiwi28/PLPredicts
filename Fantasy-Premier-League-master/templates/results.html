@@ -26,12 +26,12 @@
     
     {% if success %}
         <h2>Player: {{ player_name }}</h2>
-        <h3>Prediction: ≈ {{ predicted_points }} over the next 5 games</h3>
+        <h3>Prediction: ≈ {{ predicted_points }} points over the next 5 games</h3>
     {% endif %}
     
     {% if error %}
-        <h2>ERROR</h2>
-        <p class="error-display">{{ error }}</p>
+        <h2 style=" color: red;">ERROR</h2>
+        <p>{{ error }}</p>
         
         {% if similar_players %}
             <h3>Similar players found:</h3>
@@ -44,10 +44,14 @@
     {% endif %}
 
     </div>
-    
-    <p >
-        <a class="bth-button" href="/">Back to Home</a>
-    </p>
+
+
+    <div class="bth-button">
+        <a href="/">
+            <p>Make a New Prediction</p>
+        </a>
+    </div>
+
 </body>
 
 </html>

@@ -105,7 +105,7 @@ html{
 .results-display {
     background-color: var(--bg-color);
     background: var(--second-bg-color);        /* white background */
-    padding: 20px;            /* space inside */
+    padding: 10px;            /* space inside */
     margin: 20px auto;        /* space outside + center horizontally */
     width: 80%;               /* shrink from 100% */
     max-width: 800px;         /* optional: prevent it from getting too wide */
@@ -116,16 +116,29 @@ html{
 .results-display ul{
     list-style: none;
     text-align: center;
-    text-indent: 0;
+    padding: 0;
+    margin: 0;
+
+    color: var(--text-color);
+    font-family: "Montserrat" , sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 111%;
 }
 
 .results-display p{
-    list-style: none;
     text-align: center;
+
+    color: var(--text-color);
+    background: none;
+    font-family: "Montserrat" , sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 120%;
 }
 
 h1{
-    padding-top: 15vh;
+    padding-top: 0.45rem;
     font-size: 500%;
     text-align: center;
     color: var(--text-color);
@@ -142,6 +155,7 @@ h2{
     font-optical-sizing: auto;
     font-style: normal;
 }
+
 h3{
     font-size: 167%;
     text-align: center;
@@ -157,7 +171,15 @@ form{
     align-items: center;
 }
 
-.bth-button{
-    padding-top: 2.5rem;
+.bth-button a,p{
+    padding-top: 0.67rem;
     text-align: center;
+
+    color: var(--second-bg-color);
+    background-color: var(--main-color);
+   
+    margin: 20px auto;        /* space outside + center horizontally */
+    width: 25%;               /* shrink from 100% */
+    border-radius: 10px;
+
 }
