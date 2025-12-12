@@ -10,8 +10,151 @@
 
 html{
     background-color: var(--text-color-secondary);
-
 }
+
+.search-container {
+            background: var(--second-bg-color);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+ .search-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .input-container {
+            position: relative;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 45px 15px 45px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        input[type="text"]:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            pointer-events: none;
+        }
+
+        .clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            display: none;
+            transition: color 0.2s;
+        }
+
+        .clear-btn:hover {
+            color: #333;
+        }
+
+        .clear-btn.active {
+            display: block;
+        }
+
+        .predict-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #6b15ce 0%, #3d007a 100%); /*The wierd graditent*/
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .predict-btn:hover {
+            /* transform: translateY(-2px); */
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .predict-btn:active {
+            transform: translateY(0);
+        }
+
+        .predict-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .search-wrapper {
+                flex-direction: column;
+            }
+
+            .predict-btn {
+                width: 100%;
+            }
+        }
 
 
 .header{
@@ -160,16 +303,12 @@ h3{
     font-size: 167%;
     text-align: center;
     color: var(--text-color);
+     margin-bottom: 30px; /*New code i added - take out if it doesnt work*/
     font-family: "Montserrat" , sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
-
-form{
-    display: flex;
-    align-items: center;
-}
 
 .bth-button a,p{
     padding-top: 0.67rem;

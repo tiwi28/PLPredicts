@@ -3,7 +3,7 @@ import pandas as pd
 import predictor
 
 
-app = Flask(__name__, static_folder="static\styles")
+app = Flask(__name__, static_folder="static")
 
 
 # At the top of your Flask app, load the player names once
@@ -79,7 +79,7 @@ def predict_player():
                 'suggestion': 'Use the search endpoint to find valid player names'
             }
             if partial_matches:
-                error_response['similar_players'] = partial_matches[:5]
+                error_response['similar_players'] = partial_matches[:5] # type: ignore
             return jsonify(error_response), 404
         else:
             return render_template("results.html", 

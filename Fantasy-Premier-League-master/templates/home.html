@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PL Predicts</title>
@@ -25,14 +25,38 @@
 
     <!-- Search Bar -->
 
-<div class = "search-component">
-    <h3>Enter a Player Name</h2>
-    <form action="{{ url_for('predict_player') }}" method="POST">
-        <input type="text" name="player_name" placeholder="Player Name" required>
-        <button type="submit" href="results.html">Predict</button>
-    </form>
+    <div class="search-container">
+        <h3>Enter a Player Name</h3>
+        
+        <form id="searchForm">
+            <div class="search-wrapper">
+                <div class="input-container">
+                    <span class="search-icon">
+                        <img src="static/img/icons8-search.svg">
+                    </span>
+                    <input
+                        type="text" 
+                        id="playerName" 
+                        placeholder="Search for a player..."
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="button" class="clear-btn" id="clearBtn">✕</button>
+                </div>
+                <button type="submit" class="predict-btn" id="predictBtn">
+                    Predict
+                </button>
+            </div>
+        </form>
 
-</div>
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Searching...</p>
+        </div>
 
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
