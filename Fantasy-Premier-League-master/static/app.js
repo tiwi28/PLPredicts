@@ -6,17 +6,17 @@ const form = document.getElementById('searchForm');
         const result = document.getElementById('result');
 
         // Show/hide clear button
-        input.addEventListener('input', () => {
-            clearBtn.classList.toggle('active', input.value.length > 0);
-        });
+        // input.addEventListener('input', () => {
+        //     clearBtn.classList.toggle('active', input.value.length > 0);
+        // });
 
         // Clear input
-        clearBtn.addEventListener('click', () => {
-            input.value = '';
-            clearBtn.classList.remove('active');
-            input.focus();
-            result.style.display = 'none';
-        });
+        // clearBtn.addEventListener('click', () => {
+        //     input.value = '';
+        //     clearBtn.classList.remove('active');
+        //     input.focus();
+        //     result.style.display = 'none';
+        // });
 
         // Form submission
         form.addEventListener('submit', async (e) => {

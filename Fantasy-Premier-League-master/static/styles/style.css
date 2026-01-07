@@ -23,6 +23,10 @@ html{
             margin: 20px auto;
         }
 
+        form#searchForm {
+            display: contents;
+        }
+
  .search-wrapper {
             display: flex;
             flex-direction: column;
@@ -33,9 +37,11 @@ html{
 
         .input-container {
             position: relative;
-            width: 100%;
-            max-width: 200px;
-            margin: 0 auto;
+            width: 50%;
+            /* max-width: 200px; */
+            justify-content: center;
+            padding-right: 5.9rem;
+          
         }
 
         input[type="text"] {
@@ -50,8 +56,8 @@ html{
         }
 
         input[type="text"]:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--bg-color);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
         }
 
         .search-icon {
@@ -88,7 +94,7 @@ html{
 
         .predict-btn {
             padding: 15px 30px;
-            background: linear-gradient(135deg, #6b15ce 0%, #3d007a 100%); /*The wierd graditent*/
+            background: var(--main-color);
             color: white;
             border: none;
             border-radius: 12px;
@@ -102,8 +108,7 @@ html{
         }
 
         .predict-btn:hover {
-            /* transform: translateY(-2px); */
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
         }
 
         .predict-btn:active {
@@ -120,12 +125,12 @@ html{
             display: none;
             text-align: center;
             margin-top: 20px;
-            color: #667eea;
+            color: var(--main-color);
         }
 
         .spinner {
             border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
+            border-top: 3px solid var(--main-color);
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -223,26 +228,25 @@ html{
 }
 
 
+/* Unused - kept for reference if needed later
 .search-component {
     background-color: var(--bg-color);
-     background: var(--second-bg-color);  
-  padding: 20px;            /* space inside */
-  margin: 20px auto;        /* space outside + center horizontally */
-  width: 80%;               /* shrink from 100% */
-  max-width: 800px;         /* optional: prevent it from getting too wide */
-  border-radius: 8px;       /* optional: rounded corners */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* optional: soft shadow */
-   
+     background: var(--second-bg-color);
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 
 .search-component form {
     justify-content: center;
     display: flex;
     align-items: center;
     align-content: center;
-    
 }
+*/
 
 
 .results-display {
