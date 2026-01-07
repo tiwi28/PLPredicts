@@ -3,11 +3,6 @@ import numpy as np
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import TimeSeriesSplit
-
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 url = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data/2023-24/gws/merged_gw.csv"
