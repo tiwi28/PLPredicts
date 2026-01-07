@@ -4,8 +4,8 @@ import predictor
 
 
 app = Flask(__name__, 
-            static_folder="static",
-            template_folder="templates")
+            static_folder="../Fantasy-Premier-League/static",
+            template_folder="../Fantasy-Premier-League/templates")
 
 
 # At the top of your Flask app, load the player names once

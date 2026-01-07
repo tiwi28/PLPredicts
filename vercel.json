@@ -1,11 +1,8 @@
 {
   "builds": [
     {
-      "src": "Fantasy-Premier-League/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "requirementsPath": "Fantasy-Premier-League/requirements.txt"
-      }
+      "src": "api/index.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
@@ -15,7 +12,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "Fantasy-Premier-League/main.py"
+      "dest": "api/index.py"
     }
   ]
 }
