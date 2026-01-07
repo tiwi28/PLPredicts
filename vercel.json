@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "Fantasy-Premier-League/main.py",
