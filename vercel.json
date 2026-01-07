@@ -10,6 +10,10 @@
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/Fantasy-Premier-League/static/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "Fantasy-Premier-League/main.py"
     }

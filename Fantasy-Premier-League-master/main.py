@@ -3,7 +3,9 @@ import pandas as pd
 import predictor
 
 
-app = Flask(__name__, static_folder="static")
+app = Flask(__name__, 
+            static_folder="static",
+            template_folder="templates")
 
 
 # At the top of your Flask app, load the player names once
@@ -115,8 +117,9 @@ def predict_player():
             return render_template("results.html", error=f'Prediction failed: {str(e)}')
 
 
-if __name__ == "__main__":
-    app.run()
+#Commented out for Vercel to Run
+# if __name__ == "__main__":
+#     app.run()
     
 
 # @app.route("/login")
