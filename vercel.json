@@ -7,10 +7,6 @@
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/Fantasy-Premier-League/static/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "api/main.py"
     }
