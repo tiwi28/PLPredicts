@@ -1,10 +1,24 @@
+import re
+
 import pandas as pd
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
+# 2023/24 Premier League season. Confirmed from the data itself, not just the URL:
+# kickoffs run 2023-08-11 to 2024-05-19, and the 20 teams include Burnley, Luton
+# and Sheffield Utd - the three sides promoted for that season.
 DATA_URL = "https://raw.githubusercontent.com/vaastav/Fantasy-Premier-League/master/data/2023-24/gws/merged_gw.csv"
+
+
+def _season_from_url(url):
+    """Derive a display season ("2023/24") from the dataset URL."""
+    match = re.search(r"/(\d{4})-(\d{2})/", url)
+    return f"{match.group(1)}/{match.group(2)}" if match else "Unknown season"
+
+
+SEASON = _season_from_url(DATA_URL)
 
 FEATURE_COLUMNS = [
     'avg_points_last_6', 'avg_goals_last_6', 'avg_assists_last_6',

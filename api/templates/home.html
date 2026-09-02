@@ -1,61 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- Font Stuff -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PL Predicts</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 <body>
 
-<!-- IMAGE - need to figure out how to display it as it currently doesnt work -->
- 
-        <!-- <img class="logo" src="{{url_for('static', filename='img/logo_flat_design.jpg')}}"> -->
-
-    <div class="header">
+    <header class="header">
         <h1>PL Predicts</h1>
-    </div>
+        <p class="tagline">Fantasy points forecasting for the {{ season }} Premier League season</p>
+        <span class="season-badge">{{ season }} Season Data</span>
+    </header>
 
+    <main>
+        <div class="search-container">
+            <h3>Enter a Player Name</h3>
 
-    <!-- Search Bar -->
-
-    <div class="search-container">
-        <h3>Enter a Player Name</h3>
-        
-        <form id="searchForm">
-            <div class="search-wrapper">
-                <div class="input-container">
-                    <!-- <span class="search-icon">
-                        <img src="static/img/icons8-search.svg">
-                    </span> -->
-                    <input
-                        type="text" 
-                        id="playerName" 
-                        placeholder="Search for a player..."
-                        autocomplete="on"
-                        required
-                    >
-                    <!-- <button type="button" class="clear-btn" id="clearBtn">✕</button> -->
-                </div>
-                <button type="submit" class="predict-btn" id="predictBtn">
-                    Predict
-                </button>
+            <div class="season-note">
+                <p class="season-note-title">Search players from the {{ season }} season</p>
+                <p>
+                    This model only knows the <strong>{{ season }}</strong> Premier League
+                    campaign, so search a player who featured that season &mdash; that
+                    includes <strong>Burnley</strong>, <strong>Luton</strong> and
+                    <strong>Sheffield Utd</strong>, who were in the league that year.
+                    Anyone who arrived after {{ season }} won't be found.
+                </p>
             </div>
-        </form>
 
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Searching...</p>
+            <form id="searchForm">
+                <div class="search-wrapper">
+                    <div class="input-container">
+                        <input
+                            type="text"
+                            id="playerName"
+                            placeholder="e.g. Bukayo Saka ({{ season }} player)"
+                            autocomplete="off"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="predict-btn" id="predictBtn">
+                        Predict
+                    </button>
+                </div>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Crunching the numbers...</p>
+            </div>
+
+            <div class="result" id="result"></div>
+
+            <p class="hint">
+                Predicts total fantasy points over a player's next 5 games,
+                based on their {{ season }} form.
+            </p>
         </div>
+    </main>
 
-        <div class="result" id="result"></div>
-    </div>
+    <footer class="site-footer">
+        <p>Model trained on {{ season }} Premier League gameweek data.</p>
+    </footer>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>

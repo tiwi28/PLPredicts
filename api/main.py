@@ -9,6 +9,12 @@ app = Flask(
 )
 
 
+@app.context_processor
+def inject_season():
+    """Make the dataset's season available to every template (cheap - no model load)."""
+    return {"season": predictor.SEASON}
+
+
 def get_all_players():
     """Player list, resolved lazily so a cold start doesn't do heavy work at import."""
     return predictor.get_all_player_names()
@@ -94,6 +100,7 @@ def predict_player():
             return jsonify({
                 'player_name': exact_player_name,
                 'predicted_points': prediction,
+                'season': predictor.SEASON,
                 'success': True,
             })
         return render_template(
