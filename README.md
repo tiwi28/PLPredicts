@@ -16,7 +16,7 @@ fantasy points they would accumulate over a 5-game period.
 ### Setup
 
 ```bash
-git clone <your-fork-url> PremPredictz
+git clone https://github.com/tiwi28/PLPredicts.git PremPredictz
 cd PremPredictz
 
 # create and activate a virtual environment
